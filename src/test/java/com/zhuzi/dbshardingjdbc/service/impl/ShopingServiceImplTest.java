@@ -1,8 +1,8 @@
 package com.zhuzi.dbshardingjdbc.service.impl;
 
 import com.zhuzi.dbshardingjdbc.DbShardingJdbcApplicationTests;
-import com.zhuzi.dbshardingjdbc.model.Shoping;
-import com.zhuzi.dbshardingjdbc.service.service.ShopingService;
+import com.zhuzi.dbshardingjdbc.model.Shopping;
+import com.zhuzi.dbshardingjdbc.service.service.ShoppingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,17 +11,17 @@ import java.util.List;
 class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
 
     @Autowired
-    private ShopingService shopingService;
+    private ShoppingService shopingService;
 
     /**
      * 测试数据节点是否可用
      * **/
     @Test
     void insertSelective() {
-        Shoping shoping = new Shoping();
-        shoping.setShopingId(11111111L);
-        shoping.setShopingName("黄金零号竹子");
-        shoping.setShopingPrice(8888);
+        Shopping shoping = new Shopping();
+        shoping.setShoppingId(11111112L);
+        shoping.setShoppingName("黄金零号竹子");
+        shoping.setShoppingPrice(8888);
         shopingService.insertSelective(shoping);
     }
 
@@ -31,10 +31,10 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
     @Test
     void databaseStrategyInsert() {
         for (int i = 1; i <= 10; i++){
-            Shoping shoping = new Shoping();
-            shoping.setShopingId((long) i);
-            shoping.setShopingName("黄金"+ i +"号竹子");
-            shoping.setShopingPrice(1111 * i);
+            Shopping shoping = new Shopping();
+            shoping.setShoppingId((long) i);
+            shoping.setShoppingName("黄金"+ i +"号竹子");
+            shoping.setShoppingPrice(1111 * i);
             shopingService.insertSelective(shoping);
         }
     }
@@ -45,8 +45,8 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
     @Test
     void tableStrategyInsert() {
         for (int i = 1; i <= 20; i++){
-            Shoping shoping =
-                    new Shoping((long) i, "白玉"+ i +"号竹子", i * 888);
+            Shopping shoping =
+                    new Shopping((long) i, "白玉"+ i +"号竹子", i * 888);
             shopingService.insertSelective(shoping);
         }
     }
@@ -56,7 +56,7 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
      * **/
     @Test
     void findByShopingID() {
-        Shoping shoping = shopingService.selectByPrimaryKey(1L);
+        Shopping shoping = shopingService.selectByPrimaryKey(1L);
         System.out.println(shoping);
     }
 
@@ -65,7 +65,7 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
      * **/
     @Test
     void queryAllShopingData() {
-        List<Shoping> shopings = shopingService.getAll();
+        List<Shopping> shopings = shopingService.getAll();
         shopings.forEach(System.out::println);
     }
 
@@ -75,9 +75,9 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
     @Test
     void insertSnowflake() {
         for (int i = 1; i <= 10; i++) {
-            Shoping shoping = new Shoping();
-            shoping.setShopingName("黄金"+ i +"号竹子");
-            shoping.setShopingPrice(8888);
+            Shopping shoping = new Shopping();
+            shoping.setShoppingName("黄金"+ i +"号竹子");
+            shoping.setShoppingPrice(8888);
             shopingService.insertSelective(shoping);
         }
     }

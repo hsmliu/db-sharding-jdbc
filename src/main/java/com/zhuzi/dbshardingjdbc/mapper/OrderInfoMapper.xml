@@ -4,12 +4,12 @@
     <constructor >
       <idArg column="order_info_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="order_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="shoping_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="shoping_price" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="shopping_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shopping_price" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    order_info_id, order_id, shoping_name, shoping_price
+    order_info_id, order_id, shopping_name, shopping_price
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -22,10 +22,9 @@
     where order_info_id = #{orderInfoId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.zhuzi.dbshardingjdbc.model.OrderInfo" >
-    insert into order_info (order_info_id, order_id, shoping_name, 
-      shoping_price)
-    values (#{orderInfoId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{shopingName,jdbcType=VARCHAR},
-      #{shopingPrice,jdbcType=INTEGER})
+    insert into order_info (order_info_id, order_id, shopping_name, shopping_price)
+    values (#{orderInfoId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{shoppingName,jdbcType=VARCHAR},
+      #{shoppingPrice,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zhuzi.dbshardingjdbc.model.OrderInfo" >
     insert into order_info
@@ -36,11 +35,11 @@
       <if test="orderId != null" >
         order_id,
       </if>
-      <if test="shopingName != null" >
-        shoping_name,
+      <if test="shoppingName != null" >
+        shopping_name,
       </if>
-      <if test="shopingPrice != null" >
-        shoping_price,
+      <if test="shoppingPrice != null" >
+        shopping_price,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -50,11 +49,11 @@
       <if test="orderId != null" >
         #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="shopingName != null" >
-        #{shopingName,jdbcType=VARCHAR},
+      <if test="shoppingName != null" >
+        #{shoppingName,jdbcType=VARCHAR},
       </if>
-      <if test="shopingPrice != null" >
-        #{shopingPrice,jdbcType=INTEGER},
+      <if test="shoppingPrice != null" >
+        #{shoppingPrice,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -64,11 +63,11 @@
       <if test="orderId != null" >
         order_id = #{orderId,jdbcType=BIGINT},
       </if>
-      <if test="shopingName != null" >
-        shoping_name = #{shopingName,jdbcType=VARCHAR},
+      <if test="shoppingName != null" >
+        shopping_name = #{shoppingName,jdbcType=VARCHAR},
       </if>
-      <if test="shopingPrice != null" >
-        shoping_price = #{shopingPrice,jdbcType=INTEGER},
+      <if test="shoppingPrice != null" >
+        shopping_price = #{shoppingPrice,jdbcType=INTEGER},
       </if>
     </set>
     where order_info_id = #{orderInfoId,jdbcType=BIGINT}
@@ -76,8 +75,8 @@
   <update id="updateByPrimaryKey" parameterType="com.zhuzi.dbshardingjdbc.model.OrderInfo" >
     update order_info
     set order_id = #{orderId,jdbcType=BIGINT},
-      shoping_name = #{shopingName,jdbcType=VARCHAR},
-      shoping_price = #{shopingPrice,jdbcType=INTEGER}
+      shopping_name = #{shoppingName,jdbcType=VARCHAR},
+      shopping_price = #{shoppingPrice,jdbcType=INTEGER}
     where order_info_id = #{orderInfoId,jdbcType=BIGINT}
   </update>
 </mapper>

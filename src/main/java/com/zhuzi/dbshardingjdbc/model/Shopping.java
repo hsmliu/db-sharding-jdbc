@@ -2,40 +2,29 @@ package com.zhuzi.dbshardingjdbc.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderInfo {
-    private Long orderInfoId;
-
-    private Long orderId;
+public class Shopping {
+    private Long shoppingId;
 
     private String shoppingName;
 
     private Integer shoppingPrice;
 
-    public OrderInfo(Long orderInfoId, Long orderId, String shoppingName, Integer shoppingPrice) {
-        this.orderInfoId = orderInfoId;
-        this.orderId = orderId;
+    public Shopping(Long shoppingId, String shoppingName, Integer shoppingPrice) {
+        this.shoppingId = shoppingId;
         this.shoppingName = shoppingName;
         this.shoppingPrice = shoppingPrice;
     }
 
-    public OrderInfo() {
+    public Shopping() {
         super();
     }
 
-    public Long getOrderInfoId() {
-        return orderInfoId;
+    public Long getShoppingId() {
+        return shoppingId;
     }
 
-    public void setOrderInfoId(Long orderInfoId) {
-        this.orderInfoId = orderInfoId;
-    }
-
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setShoppingId(Long shoppingId) {
+        this.shoppingId = shoppingId;
     }
 
     public String getShoppingName() {
@@ -56,9 +45,8 @@ public class OrderInfo {
 
     @Override
     public String toString() {
-        return "OrderInfo{" +
-                "orderInfoId=" + orderInfoId +
-                ", orderId=" + orderId +
+        return "shopping{" +
+                "shoppingId=" + shoppingId +
                 ", shoppingName='" + shoppingName + '\'' +
                 ", shoppingPrice=" + shoppingPrice +
                 '}';

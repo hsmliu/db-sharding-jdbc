@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuzi.dbshardingjdbc.mapper.ShoppingMapper" >
+  <resultMap id="BaseResultMap" type="com.zhuzi.dbshardingjdbc.model.Shopping" >
+    <constructor >
+      <idArg column="shopping_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="shopping_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="shopping_price" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shopping_id, shopping_name, shopping_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from shopping
+    where shopping_id = #{shoppingId,jdbcType=BIGINT}
+  </select>
+  <select id="getAll" resultMap="BaseResultMap"  resultType="com.zhuzi.dbshardingjdbc.model.Shopping">
+    select
+    <include refid="Base_Column_List" />
+    from shopping
+    order by shopping_id asc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from shopping
+    where shopping_id = #{shoppingId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zhuzi.dbshardingjdbc.model.Shopping" >
+    insert into shopping (shopping_id, shopping_name, shopping_price)
+    values (#{shoppingId,jdbcType=BIGINT}, #{shoppingName,jdbcType=VARCHAR}, #{shoppingPrice,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhuzi.dbshardingjdbc.model.Shopping" >
+    insert into shopping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shoppingId != null" >
+        shopping_id,
+      </if>
+      <if test="shoppingName != null" >
+        shopping_name,
+      </if>
+      <if test="shoppingPrice != null" >
+        shopping_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shoppingId != null" >
+        #{shoppingId,jdbcType=BIGINT},
+      </if>
+      <if test="shoppingName != null" >
+        #{shoppingName,jdbcType=VARCHAR},
+      </if>
+      <if test="shoppingPrice != null" >
+        #{shoppingPrice,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhuzi.dbshardingjdbc.model.Shopping" >
+    update shopping
+    <set >
+      <if test="shoppingName != null" >
+        shopping_name = #{shoppingName,jdbcType=VARCHAR},
+      </if>
+      <if test="shoppingPrice != null" >
+        shopping_price = #{shoppingPrice,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shopping_id = #{shoppingId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhuzi.dbshardingjdbc.model.Shopping" >
+    update shopping
+    set shopping_name = #{shoppingName,jdbcType=VARCHAR},
+      shopping_price = #{shoppingPrice,jdbcType=INTEGER}
+    where shopping_id = #{shoppingId,jdbcType=BIGINT}
+  </update>
+</mapper>

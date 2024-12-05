@@ -33,8 +33,8 @@ class OrderServiceImplTest extends DbShardingJdbcApplicationTests {
             OrderInfo orderInfo = new OrderInfo();
             // 前面插入订单的方法执行完成后会返回orderID
             orderInfo.setOrderId(order.getOrderId());
-            orderInfo.setShopingName("黄金1号竹子");
-            orderInfo.setShopingPrice(8888);
+            orderInfo.setShoppingName("黄金1号竹子");
+            orderInfo.setShoppingPrice(8888);
 
             orderInfoService.insertSelective(orderInfo);
         }
