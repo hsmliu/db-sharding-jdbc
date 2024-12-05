@@ -2,6 +2,7 @@ package com.zhuzi.dbshardingjdbc.service.impl;
 
 import com.zhuzi.dbshardingjdbc.DbShardingJdbcApplicationTests;
 import com.zhuzi.dbshardingjdbc.model.Shopping;
+import com.zhuzi.dbshardingjdbc.repository.ShoppingRepository;
 import com.zhuzi.dbshardingjdbc.service.service.ShoppingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,20 @@ class ShopingServiceImplTest extends DbShardingJdbcApplicationTests {
     @Autowired
     private ShoppingService shopingService;
 
+    @Autowired
+    private ShoppingRepository shoppingRepository;
+
     /**
      * 测试数据节点是否可用
      * **/
     @Test
     void insertSelective() {
         Shopping shoping = new Shopping();
-        shoping.setShoppingId(11111112L);
+        shoping.setShoppingId(11111113L);
         shoping.setShoppingName("黄金零号竹子");
         shoping.setShoppingPrice(8888);
-        shopingService.insertSelective(shoping);
+//        shopingService.insertSelective(shoping);
+        shoppingRepository.save(shoping);
     }
 
     /**

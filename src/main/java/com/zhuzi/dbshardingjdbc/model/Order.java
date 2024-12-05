@@ -2,8 +2,15 @@ package com.zhuzi.dbshardingjdbc.model;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Component
+@Entity
+@Table(name = "order")
 public class Order {
+    @Id
     private Long orderId;
 
     private Integer orderPrice;
